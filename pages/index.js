@@ -10,6 +10,7 @@ export default function Home() {
   const dispatch = useDispatch();
   const data = useSelector(repoSelectors.selectAll);
   console.log(data, "data repository");
+  const img = 'https://scontent.fcgk30-1.fna.fbcdn.net/v/t39.30808-6/246147583_4879141305450887_6948393603603330226_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFwM7-hIrWLSg_RPtZ9T_9c1uuyBc5jAKPW67IFzmMAo5kMqLf0FeZ8JyxFh_Kd03hUQGMQCtcI6Bbru3tWLNGK&_nc_ohc=BNjkY2BAUMEAX_Syv1U&_nc_ht=scontent.fcgk30-1.fna&oh=00_AT_QwHxaU1SS84_tB6FBHYfdDgJhZfpppDJW2Ad_fSmELA&oe=6309A523'
 
   useEffect(() => {
     dispatch(getRepo());
@@ -23,6 +24,28 @@ export default function Home() {
       </Head>
 
       <div className="container mt-5">
+        <div>
+          <div className="card mb-4">
+            <div className="card-body text-center">
+              <img
+                src={img}
+                className="rounded-circle img-fluid"
+                style={{ width: 150 }}
+              />
+              <h5 className="my-3">Hari Kurniawan</h5>
+              <p className="text-muted mb-1">Full Stack Developer</p>
+              <p className="text-muted mb-4">Tasikmalaya, Jawa Barat Indonesia</p>
+              <div className="d-flex justify-content-center mb-2">
+                <button type="button" className="btn btn-primary">
+                  Follow
+                </button>
+                <button type="button" className="btn btn-outline-primary ms-1">
+                  Message
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="row d-flex justify-content-center">
           <div className="col-6">
             {data.map((as) => {
@@ -37,11 +60,22 @@ export default function Home() {
                     </div>
                     <div className="col-md-8">
                       <div className="card-body">
-                        <h6 className="card-title text-uppercase fw-bold">{as.name}</h6>
-                        <p className="card-text">{as.description}</p>
+                        <h6 className="card-title text-uppercase fw-bold">
+                          {as.name}
+                        </h6>
+                        <p className="card-text fst-italic">{as.description}</p>
                         <h7 className="card-title mt-5">
                           Language :
-                          <span class="ms-2 badge bg-secondary">{as.language}</span>
+                          <span class="ms-2 badge bg-secondary">
+                            {as.language}
+                          </span>
+                        </h7>{" "}
+                        <br></br>
+                        <h7 className="card-title mt-5">
+                          visibility :
+                          <span class="ms-2 badge bg-secondary">
+                            {as.visibility}
+                          </span>
                         </h7>
                         <p className="card-text mt-3">
                           <small className="text-muted">
