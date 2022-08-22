@@ -26,11 +26,12 @@ export default function Home() {
       <div className="container mt-5">
         <div>
           <div className="card mb-4">
+            <section style={{backgroundColor: "#eeee"}}>
             <div className="card-body text-center">
               <img
                 src={img}
                 className="rounded-circle img-fluid"
-                style={{ width: 150 }}
+                style={{ width: 300 }}
               />
               <h5 className="my-3">Hari Kurniawan</h5>
               <p className="text-muted mb-1">Full Stack Developer</p>
@@ -44,6 +45,7 @@ export default function Home() {
                 </button>
               </div>
             </div>
+            </section>
           </div>
         </div>
         <div className="row d-flex justify-content-center">
