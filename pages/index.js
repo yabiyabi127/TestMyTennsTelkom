@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getRepo, repoSelectors } from "../slice/RepoSlice";
+import Link from "next/link";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -24,28 +25,40 @@ export default function Home() {
       <div className="container mt-5">
         <div className="row d-flex justify-content-center">
           <div className="col-6">
-            <div className="card mb-3" style={{maxwidth: 540}}>
-              <div className="row g-0">
-                <div className="col-md-4">
-                  <img  className="img-fluid rounded-start" />
-                </div>
-                <div className="col-md-8">
-                  <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </p>
-                    <p className="card-text">
-                      <small className="text-muted">
-                        Last updated 3 mins ago
-                      </small>
-                    </p>
+            {data.map((as) => {
+              return (
+                <div className="card mb-3" style={{ maxwidth: 540 }}>
+                  <div className="row g-0">
+                    <div className="col-md-4">
+                      <img
+                        src={as.owner.avatar_url}
+                        className="img-fluid rounded-start"
+                      />
+                    </div>
+                    <div className="col-md-8">
+                      <div className="card-body">
+                        <h6 className="card-title text-uppercase fw-bold">{as.name}</h6>
+                        <p className="card-text">{as.description}</p>
+                        <h7 className="card-title mt-5">
+                          Language :
+                          <span class="ms-2 badge bg-secondary">{as.language}</span>
+                        </h7>
+                        <p className="card-text mt-3">
+                          <small className="text-muted">
+                            Last updated : {as.updated_at}
+                          </small>
+                        </p>
+                        <Link href={as.html_url}>
+                          <button type="button" class="btn btn-outline-primary">
+                            Open Repository
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </div>
